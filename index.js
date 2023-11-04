@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
 const morgan = require("morgan");
+const userRoute = require("./routes/users");
+const authRoute = require("./routes/auth")
 
 dotenv.config();
 
@@ -12,6 +14,13 @@ mongoose.connect(
     ).then(()=>console.log("db connection successful"))
     .catch((err)=>{console.log(err);
 });
+
+app.use(express.json());
+app.use(helmet());
+app.use(morgan("common"));
+
+app.use("/api/users", userRoute);
+app.use("/api/auth", authRoute);
 
 app.listen(5000, () =>{
     console.log("backend server is ready")

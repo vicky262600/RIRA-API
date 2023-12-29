@@ -7,6 +7,9 @@ const morgan = require("morgan");
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const postRoute = require("./routes/posts");
+// const multer = require("multer");
+// const { memoryStorage } = require("multer");
+
 
 dotenv.config();
 
@@ -19,6 +22,18 @@ mongoose.connect(
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
+
+// const storage = memoryStorage();
+
+// const upload = multer({storage});
+// app.post("api/upload", upload.single("file"), (req, res)=>{
+//     try{
+//         return res.status(200).json("file uploaded successfully.");
+//         console.log(file);
+//     }catch(err){
+//         console.log(err);
+//     }
+// })
 
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);

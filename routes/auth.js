@@ -21,6 +21,12 @@ router.post("/register", async (req, res) => {
     }
 });
 
+//
+router.get("/hello", async (req, res) => {
+    console.log("hello");
+    res.status(200).json("hello");
+});
+
 // Login
 router.post("/login", async(req, res)=>{
     try{

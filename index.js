@@ -21,7 +21,7 @@ mongoose.connect(
 });
 
 app.use(cors({
-    origin: [],
+    origin: ["https://rira-front-end.vercel.app/"],
     methods: ["GET", "PUT", "POST", "DELETE"],
     credentials: true
 }));

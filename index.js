@@ -9,6 +9,7 @@ const authRoute = require("./routes/auth");
 const postRoute = require("./routes/posts");
 // const multer = require("multer");
 // const { memoryStorage } = require("multer");
+const cors = require("cors");
 
 
 dotenv.config();
@@ -18,6 +19,12 @@ mongoose.connect(
     ).then(()=>console.log("db connection successful"))
     .catch((err)=>{console.log(err);
 });
+
+app.use(cors({
+    origin: [],
+    methods: ["GET", "PUT", "POST", "DELETE"],
+    credentials: true
+}));
 
 app.use(express.json());
 app.use(helmet());
